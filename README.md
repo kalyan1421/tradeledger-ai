@@ -3,13 +3,6 @@
 
 AI-Powered Intelligent Trade Analysis & Decision Support System
 
-
-
-
-
-
-
-
 </div>
 📌 Overview
 
