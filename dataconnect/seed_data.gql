@@ -1,0 +1,125 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Seed data mutation, safe for any logged in user to run once.") {
+  user_insertMany(data: [
+    {
+      id: "a0000000-0000-4000-8000-000000000001",
+      createdAt: "2023-01-01T10:00:00Z",
+      displayName: "Demo User One",
+      email: "demouser1@example.com",
+      lastLogin: "2023-10-26T14:30:00Z",
+      photoUrl: "https://example.com/user1.jpg"
+    },
+    {
+      id: "a0000000-0000-4000-8000-000000000002",
+      createdAt: "2023-01-02T11:00:00Z",
+      displayName: "Demo User Two",
+      email: "demouser2@example.com",
+      lastLogin: "2023-10-25T15:00:00Z",
+      photoUrl: "https://example.com/user2.jpg"
+    }
+  ])
+  portfolio_insertMany(data: [
+    {
+      id: "b0000000-0000-4000-8000-000000000001",
+      userId: "a0000000-0000-4000-8000-000000000001",
+      createdAt: "2023-03-01T09:00:00Z",
+      description: "Aggressive growth portfolio for long-term gains.",
+      initialCapital: 100000.0,
+      name: "Growth Portfolio"
+    },
+    {
+      id: "b0000000-0000-4000-8000-000000000002",
+      userId: "a0000000-0000-4000-8000-000000000002",
+      createdAt: "2023-04-01T10:00:00Z",
+      description: "Conservative portfolio for stable returns.",
+      initialCapital: 50000.0,
+      name: "Income Portfolio"
+    }
+  ])
+  portfolioHolding_insertMany(data: [
+    {
+      id: "c0000000-0000-4000-8000-000000000001",
+      portfolioId: "b0000000-0000-4000-8000-000000000001",
+      averageCost: 150.25,
+      currentMarketValue: 155.50,
+      currentQuantity: 100,
+      lastUpdatedAt: "2023-10-26T16:00:00Z",
+      symbol: "GOOGL"
+    },
+    {
+      id: "c0000000-0000-4000-8000-000000000002",
+      portfolioId: "b0000000-0000-4000-8000-000000000001",
+      averageCost: 25.75,
+      currentMarketValue: 26.10,
+      currentQuantity: 500,
+      lastUpdatedAt: "2023-10-26T16:00:00Z",
+      symbol: "MSFT"
+    },
+    {
+      id: "c0000000-0000-4000-8000-000000000003",
+      portfolioId: "b0000000-0000-4000-8000-000000000002",
+      averageCost: 75.00,
+      currentMarketValue: 74.80,
+      currentQuantity: 200,
+      lastUpdatedAt: "2023-10-26T16:00:00Z",
+      symbol: "JNJ"
+    }
+  ])
+  trade_insertMany(data: [
+    {
+      id: "d0000000-0000-4000-8000-000000000001",
+      userId: "a0000000-0000-4000-8000-000000000001",
+      createdAt: "2023-09-15T10:00:00Z",
+      price: 145.00,
+      quantity: 50,
+      symbol: "GOOGL",
+      tradeDate: "2023-09-15",
+      tradeType: "BUY",
+      instrumentType: "STOCK",
+      strategy: "Swing Trade",
+      notes: "Bought after positive earnings report."
+    },
+    {
+      id: "d0000000-0000-4000-8000-000000000002",
+      userId: "a0000000-0000-4000-8000-000000000001",
+      createdAt: "2023-10-10T11:00:00Z",
+      price: 27.00,
+      quantity: 200,
+      symbol: "MSFT",
+      tradeDate: "2023-10-10",
+      tradeType: "SELL",
+      instrumentType: "STOCK"
+    },
+    {
+      id: "d0000000-0000-4000-8000-000000000003",
+      userId: "a0000000-0000-4000-8000-000000000002",
+      createdAt: "2023-08-20T14:00:00Z",
+      price: 76.50,
+      quantity: 100,
+      symbol: "JNJ",
+      tradeDate: "2023-08-20",
+      tradeType: "BUY",
+      instrumentType: "STOCK"
+    }
+  ])
+  alert_insertMany(data: [
+    {
+      id: "e0000000-0000-4000-8000-000000000001",
+      userId: "a0000000-0000-4000-8000-000000000001",
+      alertType: "PRICE_WATCH",
+      createdAt: "2023-10-20T09:00:00Z",
+      message: "GOOGL price above $160",
+      status: "ACTIVE",
+      symbol: "GOOGL",
+      threshold: 160.00
+    },
+    {
+      id: "e0000000-0000-4000-8000-000000000002",
+      userId: "a0000000-0000-4000-8000-000000000002",
+      alertType: "DAILY_SUMMARY",
+      createdAt: "2023-10-26T08:00:00Z",
+      message: "Daily portfolio summary delivered.",
+      status: "DELIVERED"
+      ,threshold: 0.0
+    }
+  ])
+}

@@ -1,0 +1,5 @@
+{
+  "name": "TradeLedger AI",
+  "description": "AI-Powered Contract Note Analyzer & Trading Dashboard using Gemini 2.5 Flash for intelligent financial data extraction.",
+  "requestFramePermissions": []
+}

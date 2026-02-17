@@ -1,0 +1,49 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  lastLogin: Timestamp
+}
+
+type Trade @table {
+  user: User!
+  symbol: String!
+  tradeType: String!
+  quantity: Int!
+  price: Float!
+  tradeDate: Date!
+  createdAt: Timestamp!
+  exitPrice: Float
+  exitDate: Date
+  strategy: String
+  notes: String
+  instrumentType: String
+}
+
+type Portfolio @table {
+  user: User!
+  name: String!
+  createdAt: Timestamp!
+  description: String
+  initialCapital: Float
+}
+
+type PortfolioHolding @table {
+  portfolio: Portfolio!
+  symbol: String!
+  averageCost: Float!
+  currentQuantity: Int!
+  lastUpdatedAt: Timestamp!
+  currentMarketValue: Float
+}
+
+type Alert @table {
+  user: User!
+  alertType: String!
+  threshold: Float!
+  status: String!
+  createdAt: Timestamp!
+  symbol: String
+  message: String
+}
